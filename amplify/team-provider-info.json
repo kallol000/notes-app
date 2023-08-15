@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "notesappcea3b779": {}
+      },
+      "api": {
+        "notesapp": {}
+      },
+      "storage": {
+        "notes": {}
       }
     }
   }
