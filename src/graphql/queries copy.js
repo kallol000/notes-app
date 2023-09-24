@@ -16,20 +16,14 @@ export const getNote = /* GraphQL */ `
           name
           description
           image
-          notebookID
           createdAt
           updatedAt
-          __typename
-        }
-        Notes {
-          nextToken
           __typename
         }
         createdAt
         updatedAt
         __typename
       }
-      notebookID
       createdAt
       updatedAt
       __typename
@@ -55,44 +49,6 @@ export const listNotes = /* GraphQL */ `
           updatedAt
           __typename
         }
-        notebookID
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const notesByNotebookID = /* GraphQL */ `
-  query NotesByNotebookID(
-    $notebookID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelNoteFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    notesByNotebookID(
-      notebookID: $notebookID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        name
-        description
-        image
-        noteBook {
-          id
-          name
-          createdAt
-          updatedAt
-          __typename
-        }
-        notebookID
         createdAt
         updatedAt
         __typename
@@ -119,23 +75,8 @@ export const getNoteBook = /* GraphQL */ `
           updatedAt
           __typename
         }
-        notebookID
         createdAt
         updatedAt
-        __typename
-      }
-      Notes {
-        items {
-          id
-          name
-          description
-          image
-          notebookID
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
         __typename
       }
       createdAt
@@ -159,13 +100,8 @@ export const listNoteBooks = /* GraphQL */ `
           name
           description
           image
-          notebookID
           createdAt
           updatedAt
-          __typename
-        }
-        Notes {
-          nextToken
           __typename
         }
         createdAt

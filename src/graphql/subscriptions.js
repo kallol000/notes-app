@@ -8,6 +8,28 @@ export const onCreateNote = /* GraphQL */ `
       name
       description
       image
+      noteBook {
+        id
+        name
+        notes {
+          id
+          name
+          description
+          image
+          notebookID
+          createdAt
+          updatedAt
+          __typename
+        }
+        Notes {
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      notebookID
       createdAt
       updatedAt
       __typename
@@ -21,6 +43,28 @@ export const onUpdateNote = /* GraphQL */ `
       name
       description
       image
+      noteBook {
+        id
+        name
+        notes {
+          id
+          name
+          description
+          image
+          notebookID
+          createdAt
+          updatedAt
+          __typename
+        }
+        Notes {
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      notebookID
       createdAt
       updatedAt
       __typename
@@ -34,6 +78,154 @@ export const onDeleteNote = /* GraphQL */ `
       name
       description
       image
+      noteBook {
+        id
+        name
+        notes {
+          id
+          name
+          description
+          image
+          notebookID
+          createdAt
+          updatedAt
+          __typename
+        }
+        Notes {
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      notebookID
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateNoteBook = /* GraphQL */ `
+  subscription OnCreateNoteBook($filter: ModelSubscriptionNoteBookFilterInput) {
+    onCreateNoteBook(filter: $filter) {
+      id
+      name
+      notes {
+        id
+        name
+        description
+        image
+        noteBook {
+          id
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        notebookID
+        createdAt
+        updatedAt
+        __typename
+      }
+      Notes {
+        items {
+          id
+          name
+          description
+          image
+          notebookID
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateNoteBook = /* GraphQL */ `
+  subscription OnUpdateNoteBook($filter: ModelSubscriptionNoteBookFilterInput) {
+    onUpdateNoteBook(filter: $filter) {
+      id
+      name
+      notes {
+        id
+        name
+        description
+        image
+        noteBook {
+          id
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        notebookID
+        createdAt
+        updatedAt
+        __typename
+      }
+      Notes {
+        items {
+          id
+          name
+          description
+          image
+          notebookID
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteNoteBook = /* GraphQL */ `
+  subscription OnDeleteNoteBook($filter: ModelSubscriptionNoteBookFilterInput) {
+    onDeleteNoteBook(filter: $filter) {
+      id
+      name
+      notes {
+        id
+        name
+        description
+        image
+        noteBook {
+          id
+          name
+          createdAt
+          updatedAt
+          __typename
+        }
+        notebookID
+        createdAt
+        updatedAt
+        __typename
+      }
+      Notes {
+        items {
+          id
+          name
+          description
+          image
+          notebookID
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename
