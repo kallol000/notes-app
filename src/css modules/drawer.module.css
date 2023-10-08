@@ -1,0 +1,26 @@
+.drawer {
+    width: 15vw;
+    transition: width 0.3s ease-in-out;
+    height: 100vh;
+    background-color: rgb(10,25,41);
+    padding-top: 28px;
+}
+ 
+.drawerClosed {
+    composes: drawer;
+    transition: width 0.3s ease-in-out;
+    width: 0px
+}
+
+.link{
+    /* background-color: aquamarine; */
+    color: white;
+    /* transition: width 0.3s ease-in-out; */
+}
+
+.linkClosed{
+    composes: link;
+    /* background-color: azure; */
+    visibility: hidden;
+    transition: visibility 0.3s ease-in-out;
+}

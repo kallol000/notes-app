@@ -1,30 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import './index.css';
+import App from './routes/App';
+import reportWebVitals from './reportWebVitals';
+import { Amplify } from 'aws-amplify';
+import config from './aws-exports';
+
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { Amplify } from 'aws-amplify';
-import config from './aws-exports';
+
+import ErrorPage from './components/Errorpage';
 Amplify.configure(config);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-]);
 
 root.render(
-  <React.StrictMode>
-    <RouterProvider router = {router}/>
-  </React.StrictMode>
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

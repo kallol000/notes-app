@@ -1,12 +1,15 @@
-
+import styles from '../css modules/drawer.module.css'
 
 export default function Drawer({ children, open }){
 
-    const drawerClass = open ? 'drawer open' : 'drawer'
+    const drawerClass = open ? styles.drawer : styles.drawerClosed
+    const linkClass = open ? styles.link : styles.linkClosed
 
     return(
         <section className = {drawerClass} >
-            {children}
+            <div className= {linkClass}>Passwords</div>
+            <div className= {linkClass}>Passwords</div>
+            <div className= {linkClass}>Passwords</div>
         </section>
     )
 }

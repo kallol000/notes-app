@@ -1,6 +1,7 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
+import styles from '../css modules/navbar.module.css'
 
 export default function Navbar({ children, open, handleOpen }){
     
@@ -8,7 +9,7 @@ export default function Navbar({ children, open, handleOpen }){
         color: '#ffffff'
     }
 
-    const navbarClass = open ? 'navbar open' : 'navbar'
+    const navbarClass = open ? styles.navbarOpen : styles.navbar
 
     return(
         <section className={navbarClass} >  

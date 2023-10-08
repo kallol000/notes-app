@@ -1,0 +1,26 @@
+.home{
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home h1{
+    margin: 0;
+}
+
+.homeGrid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 50px 300px 300px;
+    gap: 20px 100px;
+    /* align-items:start; */
+    margin: 20px;
+}
+
+.gridStart{
+    grid-column: 1/6;
+    align-items: baseline;
+    
+}
