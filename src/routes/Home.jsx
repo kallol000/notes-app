@@ -2,6 +2,8 @@ import styles from './css modules/home.module.css'
 import Modal from '../components/Modal'
 import { ThreeDots } from 'react-loader-spinner'
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import { Link } from 'react-router-dom';
+import Notebook from './Notebook';
 
 export default function Home({ isNewUser, isOpen, loading, handleOpen, handleClose, noteBooks, getNotebook, getNote, createNoteBook, createNote, deleteNoteBook, deleteNote }){
 
@@ -12,7 +14,7 @@ export default function Home({ isNewUser, isOpen, loading, handleOpen, handleClo
         <div key = {noteBook.id} className = 'notebook'>
             <div className='notebook-header'>
                 <EditNoteIcon />
-                <p>{noteBook.name}</p>
+                <Link to = {noteBook.id}>{noteBook.name}</Link>
             </div>
             <div className='notebook-footer'>
                 <p>Notes: {noteBook.Notes.items.length}</p>

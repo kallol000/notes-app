@@ -21,6 +21,5 @@
 
 .gridStart{
     grid-column: 1/6;
-    align-items: baseline;
-    
+    align-items: baseline; 
 }

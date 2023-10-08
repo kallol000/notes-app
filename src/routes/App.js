@@ -150,6 +150,7 @@ const App = ({ signOut }) => {
       <Routes>
         <Route path = '/' element = {<Layout open = {openDrawer} handleOpen = {handleOpenDrawer}/>}>
           <Route index element = {<Home isNewUser = {isNewUser} loading = {loading} noteBooks = {noteBooks} isOpen = {isModalOpen} handleOpen = {handleOpenModal} handleClose = {handleCloseModal} getNotebook = {handleGetNotebook} getNote = {handleGetNote} createNoteBook = {handleCreateNoteBook} createNote = {handleCreateNote} deleteNoteBook = {handleDeleteNoteBook} deleteNote = {handleDeleteNote} />}/>
+          <Route path=":noteBookId" element = {<Notebook />} />
         </Route>
       </Routes>
         {/* <Drawer
