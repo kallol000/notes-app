@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import "@aws-amplify/ui-react/styles.css";
 import { API, Storage } from "aws-amplify";
 
+import toast, { Toaster } from 'react-hot-toast';
+
 import { Route, Routes, Outlet } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import Notebook from "./Notebook";
 import Home from "./Home";
+import Note from "./Note";
 
 import {
   Button,
@@ -26,6 +29,8 @@ const App = ({ signOut }) => {
   
 
   // All states
+
+  const [refresh, setRefresh] = useState(false)
 
   const [isNewUser, setIsNewUser] = useState(true)
 
@@ -88,16 +93,21 @@ const App = ({ signOut }) => {
     console.log(res.data.getNote)
   }
 
-  const handleCreateNoteBook = async () => {
-    
-    const data = {name: "Passwords"}
+  const handleCreateNoteBook = async (data) => {
 
-    const res = await API.graphql({
-      query: CreateNoteBook,
-      variables: {input: data}
-    })
+    try{
+      const res = await API.graphql({
+        query: CreateNoteBook,
+        variables: {input: data}
+      })
+      setIsModalOpen(false)
+      const notify = () => toast.success(`Notebook successfully created`)
+      notify()
+      setRefresh(!refresh)
 
-    console.log(res)
+    }catch(err){
+      console.log(err)
+    }
   }
 
 
@@ -128,9 +138,9 @@ const App = ({ signOut }) => {
     console.log(res)
   }
 
-  useState(() => {
+  useEffect(() => {
     getNoteBooks()
-  },[])
+  },[refresh])
 
 
   const handleDeleteNote = async () => {
@@ -150,9 +160,11 @@ const App = ({ signOut }) => {
       <Routes>
         <Route path = '/' element = {<Layout open = {openDrawer} handleOpen = {handleOpenDrawer}/>}>
           <Route index element = {<Home isNewUser = {isNewUser} loading = {loading} noteBooks = {noteBooks} isOpen = {isModalOpen} handleOpen = {handleOpenModal} handleClose = {handleCloseModal} getNotebook = {handleGetNotebook} getNote = {handleGetNote} createNoteBook = {handleCreateNoteBook} createNote = {handleCreateNote} deleteNoteBook = {handleDeleteNoteBook} deleteNote = {handleDeleteNote} />}/>
-          <Route path=":noteBookId" element = {<Notebook />} />
+          <Route path=":noteBookId" element = {<Notebook loading = {loading} setLoading = {setLoading} />} />
+          <Route path=":noteBookId/:noteId" element = {<Note />} />
         </Route>
       </Routes>
+      <Toaster />
         {/* <Drawer
           open = {openDrawer}
         >

@@ -4,12 +4,13 @@ import { ThreeDots } from 'react-loader-spinner'
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { Link } from 'react-router-dom';
 import Notebook from './Notebook';
+import { useState } from 'react';
+import { CreateNoteBook } from '../graphql/mutations';
 
 export default function Home({ isNewUser, isOpen, loading, handleOpen, handleClose, noteBooks, getNotebook, getNote, createNoteBook, createNote, deleteNoteBook, deleteNote }){
 
-
-    console.log(noteBooks)
-
+    const [formData, setFormData] = useState({})
+    
     const noteBookDivs = noteBooks.map(noteBook => (
         <div key = {noteBook.id} className = 'notebook'>
             <div className='notebook-header'>
@@ -21,6 +22,15 @@ export default function Home({ isNewUser, isOpen, loading, handleOpen, handleClo
                 <p>Last modified: Sep 23rd</p>
             </div>
         </div>))
+
+    
+    const handleChange = (e) => {
+        setFormData(prevFormData => ({[e.target.name]:e.target.value}))
+    }
+
+    const handleSubmit = () => {
+        console.log(formData)
+    }
 
     if(loading){
         return (
@@ -43,7 +53,11 @@ export default function Home({ isNewUser, isOpen, loading, handleOpen, handleClo
                 { noteBookDivs }
             </div>
            
-            {isOpen && <Modal isOpen = {isOpen} handleClose = { handleClose }/>}
+            {isOpen && 
+                <Modal isOpen = {isOpen} handleClose = { handleClose }>
+                    <input type='text' name='name' value={formData.noteBook} placeholder='Name of your Notebook' onChange={handleChange}/>
+                    <button className='btn-primary' onClick={() => createNoteBook(formData)}>Submit</button>
+                </Modal>}
             {/* <button onClick = {getNotebook}>Get 1st Notebook</button>
             <button onClick = {getNote}>Get 1st Note</button>
             <button onClick = {createNoteBook}>Create Notebook</button>
